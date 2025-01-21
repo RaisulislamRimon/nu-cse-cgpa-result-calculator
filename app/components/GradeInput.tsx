@@ -9,17 +9,17 @@ interface GradeInputProps {
 
 const GradeInput: React.FC<GradeInputProps> = ({ index, updateGrade }) => {
   return (
-    <div className="flex gap-4 items-center mb-4">
+    <div className="flex flex-col sm:flex-row items-center gap-4 mb-6">
       <input
         type="number"
         placeholder="Grade (e.g., 4)"
-        className="input input-bordered w-full max-w-xs"
+        className="w-full sm:w-1/2 p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         onChange={(e) => updateGrade(index, 'grade', e.target.value)}
       />
       <input
         type="number"
         placeholder="Credit Hours"
-        className="input input-bordered w-full max-w-xs"
+        className="w-full sm:w-1/2 p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         onChange={(e) => updateGrade(index, 'credits', e.target.value)}
       />
     </div>

@@ -33,20 +33,30 @@ const Home = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <h1 className="text-3xl font-bold text-center mb-6">CGPA Calculator</h1>
-      {grades.map((_, index) => (
-        <GradeInput key={index} index={index} updateGrade={updateGrade} />
-      ))}
-      <div className="flex justify-center gap-4 mt-4">
-        <button onClick={addGradeField} className="btn btn-primary">
-          Add Subject
-        </button>
-        <button onClick={calculateResult} className="btn btn-success">
-          Calculate CGPA
-        </button>
+    <div className="min-h-screen bg-gradient-to-r from-blue-50 to-blue-100 p-6 sm:p-10 flex flex-col items-center">
+      <h1 className="text-4xl sm:text-5xl font-extrabold text-blue-700 mb-10 text-center">
+        National University CSE CGPA Calculator
+      </h1>
+      <div className="w-full max-w-2xl bg-white shadow-md rounded-lg p-6 sm:p-10">
+        {grades.map((_, index) => (
+          <GradeInput key={index} index={index} updateGrade={updateGrade} />
+        ))}
+        <div className="flex flex-col sm:flex-row justify-center gap-4 mt-6">
+          <button
+            onClick={addGradeField}
+            className="w-full sm:w-auto px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow hover:bg-blue-600"
+          >
+            Add Subject
+          </button>
+          <button
+            onClick={calculateResult}
+            className="w-full sm:w-auto px-6 py-3 bg-green-500 text-white font-semibold rounded-lg shadow hover:bg-green-600"
+          >
+            Calculate CGPA
+          </button>
+        </div>
+        <ResultDisplay cgpa={cgpa} />
       </div>
-      <ResultDisplay cgpa={cgpa} />
     </div>
   );
 };
