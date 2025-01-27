@@ -1,6 +1,4 @@
-  // // Default credit hours for 8 semesters
-  // const defaultCreditHours = [18, 16.5, 18, 16.5, 16.5, 16.5, 18, 18];
-  
+
   import React, { useState } from "react";
   
   const SemesterGPAAndCreditHours = () => {
