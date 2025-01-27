@@ -61,7 +61,7 @@ const Home = () => {
           <GradeInput key={index} index={index} updateGrade={updateGrade} />
         ))}
         <div className="flex flex-col sm:flex-row justify-center gap-4 mt-6">
-          <button
+          {/* <button
             onClick={addGradeField}
             className="w-full sm:w-auto px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow hover:bg-blue-600"
           >
@@ -72,7 +72,7 @@ const Home = () => {
             className="w-full sm:w-auto px-6 py-3 bg-green-500 text-white font-semibold rounded-lg shadow hover:bg-green-600"
           >
             Calculate CGPA
-          </button>
+          </button> */}
         </div>
         <ResultDisplay cgpa={cgpa} />
       </div>
