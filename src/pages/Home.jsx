@@ -5,8 +5,15 @@ import { Helmet } from "react-helmet-async";
 function Home() {
   const defaultCreditHours = [18, 16.5, 18, 16.5, 16.5, 16.5, 18, 18];
   const [creditHours, setCreditHours] = useState(defaultCreditHours);
+  const [showDescription, setShowDescription] = useState(false);
   const [gpas, setGPAs] = useState(Array(8).fill(""));
   const navigate = useNavigate();
+
+  // Toggle description visibility
+  const toggleDescription = () => {
+    setShowDescription((prev) => !prev);
+  };
+  
 
   // Handle credit hour change
   const handleCreditChange = (index, value) => {
@@ -61,12 +68,31 @@ function Home() {
       <h3 className="text-2xl sm:text-2xl font-extrabold text-orange-700 mb-3 text-center">
         How to calculate  your CGPA?
       </h3>
-      <p className="text-xl sm:text-xl font-extrabold text-orange-700 mb-10 text-center">
-        Here you will see two boxes. The first box is for your gpa - grade point of the current semester
-        & the second box is for total credit hours of the semester. If you have multiple semester, then 
-        you have to click on the Add Semester button to add the previous semester result. 
+
+      {/* Toggle Button */}
+      <button
+        onClick={toggleDescription}
+        className="mb-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+      >
+        {showDescription ? "Hide Instructions" : "Show Instructions"}
+      </button>
+
+      {/* Conditional Rendering of Description */}
+      {showDescription && (
+        <p className="text-xl sm:text-xl font-extrabold text-orange-700 mb-10 text-center">
+          Here you will see two boxes. The first box is for your total credit
+          hours of the semester & the second box is for GPA - grade point of the
+          current semester. When all the results are given, you have to click on the
+          calculate button.
+        </p>
+      )}
+      {/* <p className="text-xl sm:text-xl font-extrabold text-orange-700 mb-10 text-center">
+        Here you will see two boxes. The first box is for your total credit hours of the semester & 
+        the second box is for gpa - grade point of the current semester. 
+        If you have multiple semester, then you have to click on the Add Semester button to add the 
+        previous semester result. 
         Finally when all the results are given you have to click on calculate button. 
-      </p>
+      </p> */}
       
       {/* <h1 className="text-4xl font-extrabold text-blue-700 mb-6 text-center">
         National University CSE CGPA Calculator
