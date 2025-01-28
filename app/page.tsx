@@ -14,22 +14,10 @@ const Home = () => {
   const [grades, setGrades] = useState<Grade[]>([{ grade: null, credits: null }]);
   const [cgpa, setCGPA] = useState<number | null>(null);
 
-  const addGradeField = () => {
-    setGrades([...grades, { grade: null, credits: null }]);
-  };
-
   const updateGrade = (index: number, field: string, value: string) => {
     const updatedGrades = [...grades];
     updatedGrades[index][field as keyof Grade] = value ? parseFloat(value) : null;
     setGrades(updatedGrades);
-  };
-
-  const calculateResult = () => {
-    const validGrades = grades.filter(
-      (grade) => grade.grade !== null && grade.credits !== null
-    ) as { grade: number; credits: number }[];
-    const result = calculateCGPA(validGrades);
-    setCGPA(result);
   };
 
   return (
@@ -46,33 +34,11 @@ const Home = () => {
         you have to click on the Add Semester button to add the previous semester result. 
         Finally when all the results are given you have to click on calculate button. 
       </p>
-      {/* bottom drawer */}
-      {/* <div className="card bg-base-100 w-96 shadow-xl">
-        <div className="card-body">
-          <h2 className="card-title">Card title!</h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div className="card-actions justify-end">
-            <button className="btn btn-primary">Buy Now</button>
-          </div>
-        </div>
-      </div> */}
       <div className="w-full max-w-2xl bg-white shadow-md rounded-lg p-6 sm:p-10">
         {grades.map((_, index) => (
           <GradeInput key={index} index={index} updateGrade={updateGrade} />
         ))}
         <div className="flex flex-col sm:flex-row justify-center gap-4 mt-6">
-          {/* <button
-            onClick={addGradeField}
-            className="w-full sm:w-auto px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg shadow hover:bg-blue-600"
-          >
-            Add Semester
-          </button>
-          <button
-            onClick={calculateResult}
-            className="w-full sm:w-auto px-6 py-3 bg-green-500 text-white font-semibold rounded-lg shadow hover:bg-green-600"
-          >
-            Calculate CGPA
-          </button> */}
         </div>
         <ResultDisplay cgpa={cgpa} />
       </div>
