@@ -30,9 +30,9 @@ const resetToDefault = () => {
 // Calculate CGPA
 const calculateCGPA = () => {
   // Ensure all GPA values are entered
-  if (gpas.includes("") || gpas.some((gpa) => gpa === null || gpa < 0 || gpa > 4)) {
-    return "Please enter valid GPAs for all semesters.";
-  }
+  // if (gpas.includes("") || gpas.some((gpa) => gpa === null || gpa < 0 || gpa > 4)) {
+  //  return "Please enter valid GPAs for all semesters.";
+  //}
 
   const totalGradePoints = gpas.reduce(
     (sum, gpa, index) => sum + (Number(gpa) * creditHours[index]),
