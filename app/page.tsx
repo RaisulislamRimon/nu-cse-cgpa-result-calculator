@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import GradeInput from './components/GradeInput';
 import ResultDisplay from './components/ResultDisplay';
-import { calculateCGPA } from '../utils/calculateCGPA';
 
 interface Grade {
   grade: number | null;
@@ -12,7 +11,6 @@ interface Grade {
 
 const Home = () => {
   const [grades, setGrades] = useState<Grade[]>([{ grade: null, credits: null }]);
-  const [cgpa, setCGPA] = useState<number | null>(null);
 
   const updateGrade = (index: number, field: string, value: string) => {
     const updatedGrades = [...grades];
@@ -40,7 +38,7 @@ const Home = () => {
         ))}
         <div className="flex flex-col sm:flex-row justify-center gap-4 mt-6">
         </div>
-        <ResultDisplay cgpa={cgpa} />
+        <ResultDisplay />
       </div>
     </div>
   );
